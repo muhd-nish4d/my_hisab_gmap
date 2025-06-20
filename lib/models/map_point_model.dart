@@ -7,6 +7,8 @@ Future<List<MapPointModel>> loadPointsFromJson() async {
     'assets/json/myHisaab-May 13 2025.json',
   );
   final Map<String, dynamic> jsonData = jsonDecode(mapPoints);
+
+  // Converting to json data to map model
   return jsonData.entries.map((entry) {
     final data = entry.value;
     return MapPointModel(

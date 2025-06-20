@@ -46,6 +46,6 @@ Map built in 181 ms
 
 ## Links
 ![Map Screenshot](https://drive.google.com/uc?id=1rLwhsvy8OEfIxTvqfPIkKkmDfMsWLNls)
-[Download APK](https://drive.google.com/file/d/1q8k7o7pjxUfCePGFC4FG6c9yIm94uwm-/view?usp=drive_link)
+[Download APK](https://drive.google.com/file/d/1-SHVm8C-2W8lvdNNT_MLVfC4gOCr6KdX/view?usp=sharing)
 
 

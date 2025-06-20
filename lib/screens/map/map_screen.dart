@@ -13,11 +13,14 @@ class ScreenMap extends StatelessWidget {
       body: Consumer<MapProvider>(
         builder: (context, provider, child) {
           return provider.isLoading
+              // Show Loading
               ? Center(child: CircularProgressIndicator())
               : provider.errorMessage != null
+              // Show if have any error
               ? Center(child: Text(provider.errorMessage!))
               : Stack(
                   children: [
+                    // Map widget
                     FlutterMap(
                       options: MapOptions(
                         initialZoom: provider.points.isNotEmpty ? 16 : 5,
@@ -29,12 +32,14 @@ class ScreenMap extends StatelessWidget {
                             : LatLng(0, 0),
                       ),
                       children: [
+                        // Load Map
                         TileLayer(
                           urlTemplate:
                               'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                           userAgentPackageName: 'com.example.app',
                         ),
                         if (provider.points.isNotEmpty)
+                          // Connecting all the points with a blue line
                           PolylineLayer(
                             polylines: [
                               Polyline(
@@ -47,6 +52,7 @@ class ScreenMap extends StatelessWidget {
                             ],
                           ),
                         if (provider.points.isNotEmpty)
+                          // Draw circle on points
                           CircleLayer(
                             circles: provider.points.map((point) {
                               return CircleMarker(
@@ -55,6 +61,7 @@ class ScreenMap extends StatelessWidget {
                                 borderColor: Colors.blue,
                                 borderStrokeWidth: 1,
                                 radius: point.accuracy,
+                                useRadiusInMeter: true,
                                 // _adjustRadius(
                                 //   point.accuracy,
                                 //   provider.currentZoomLevel,
@@ -63,6 +70,7 @@ class ScreenMap extends StatelessWidget {
                             }).toList(),
                           ),
                         if (provider.points.isNotEmpty)
+                          // For mark start and end
                           MarkerLayer(
                             markers: [
                               Marker(
@@ -95,6 +103,7 @@ class ScreenMap extends StatelessWidget {
                           ),
                       ],
                     ),
+                    // For show how much time taken
                     SafeArea(
                       child: Container(
                         margin: EdgeInsets.all(10),

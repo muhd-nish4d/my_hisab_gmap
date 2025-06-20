@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../models/map_point_model.dart';
 
 class MapProvider extends ChangeNotifier {
-  List<MapPointModel> _points = [];
-  bool _isLoading = true;
-  String? _errorMessage;
-  int? _buildTime;
+  List<MapPointModel> _points = []; // points
+  bool _isLoading = true; // show loading
+  String? _errorMessage; // show error
+  int? _buildTime; // show taken time
 
   List<MapPointModel> get points => _points;
   bool get isLoading => _isLoading;
@@ -14,10 +14,12 @@ class MapProvider extends ChangeNotifier {
   int? get buildTime => _buildTime;
 
   MapProvider() {
+    // get all the points from the json data
     loadPoints();
   }
 
   Future<void> loadPoints() async {
+    // start the stop watch (for know the time)
     final stopwatch = Stopwatch()..start();
     _isLoading = true;
     _errorMessage = null;
